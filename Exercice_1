@@ -1,0 +1,65 @@
+#include <iostream>
+#include <string>
+using namespace std;
+class Date {
+private:
+int jour;
+int mois;
+int annee;
+string moisnom[12] = {"Janvier", "Fevrier", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"};
+public:
+Date() ;
+Date(int jour, int mois, int annee);
+string getDate();
+void setDate(int jour, int mois, int annee);
+void afficherDate();
+~Date();
+};
+Date::Date(int jour, int mois, int annee) {
+    if (jour < 1 || jour > 31) {
+        cout << "\nJour invalide" ;
+        exit(1);
+    }
+    if (mois < 1 || mois > 12) {
+        cout << "\nMois invalide" ;
+        exit(1);
+    }
+    this->jour = jour;
+    this->mois = mois;
+    this->annee = annee;
+}
+void Date::afficherDate() {
+    if (mois < 1 || mois > 12) {
+        cout << "Mois invalide !" << endl;
+        exit(1);
+    }
+    cout << jour << " " << moisnom[mois - 1] << " " << annee << endl;
+}
+
+string Date::getDate() {
+return to_string(this->jour) + "/" + to_string(this->mois) + "/" + to_string(this->annee);
+}
+void Date::setDate(int jour, int mois, int annee) {
+    if (jour < 1 || jour > 31) {
+        cout << "\nJour invalide" << endl;
+        exit(1);
+    }
+    if (mois < 1 || mois > 12) {
+        cout << "\nMois invalide" << endl;
+        exit(1);
+    }
+    this->jour = jour;
+    this->mois = mois;
+    this->annee = annee;
+}
+
+Date::~Date() {}
+
+int main(void) {
+Date Test(2,9,2005);
+cout<<"\nLa date est : ";
+Test.afficherDate();
+cout<<"\nLa date apres la modification est : ";
+Test.setDate(32,12,2025);
+Test.afficherDate();
+}
