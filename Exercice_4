@@ -1,0 +1,76 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class CompteBancaire{
+    private:
+    int i=0;
+    int numero,nb_annee;
+    float solde,versement,retrait,interet;
+    string nom;
+    string type_de_compte, nouveau_type;
+    public:
+    CompteBancaire(int numero,string nom,float solde,string type_de_compte);
+    void versementcompte(float versement);
+    void retraitcompte(float retrait);
+    void interetcompte(int nb_annee);
+    void affichercompte();
+    void changertype(string nouveau_type);
+    ~CompteBancaire();
+};
+CompteBancaire::CompteBancaire(int numero,string nom,float solde,string type_de_compte){
+    this->numero=numero;
+    this->nom=nom;
+    this->solde=solde;
+    this->type_de_compte=type_de_compte;
+}
+void CompteBancaire::versementcompte(float versement){
+    this->versement=versement;
+    this->solde+=versement;
+}
+void CompteBancaire::retraitcompte(float retrait){
+    this->retrait=retrait;
+    if(this->solde>=retrait){
+        this->solde-=retrait;
+    }
+    else{
+        cout<<"Solde insuffisant"<<endl;
+    }
+}
+void CompteBancaire::interetcompte(int nb_annee){
+    this->nb_annee=nb_annee;
+    while(type_de_compte=="épargne" && this->i<nb_annee){
+        this->interet=(this->solde)*0.05;
+        this->solde+=this->interet;
+        this->i+=1;
+    }
+    this->i=0;
+    if(type_de_compte=="courant"){
+        this->interet=(this->solde)*0.05*nb_annee;
+        this->solde+=this->interet;
+    }
+}
+void CompteBancaire::changertype(string nouveau_type){
+    this->type_de_compte=nouveau_type;
+}
+void CompteBancaire::affichercompte(){
+    cout<<"Le compte bancaire :"<<endl;
+    cout<<"Le numero est : "<<numero<<endl;
+    cout<<"Le nom est : "<<nom<<endl;
+    cout<<"Le solde est : "<<solde<<endl;
+    cout<<"Le type de compte est : "<<type_de_compte<<endl;
+}
+CompteBancaire:: ~CompteBancaire(){}
+int main(void){
+    CompteBancaire Compte1(136468656,"Kharbouche Mohamed",39468.72,"épargne");
+    Compte1.affichercompte();
+    Compte1.versementcompte(2000.00);
+    Compte1.retraitcompte(3950.50);
+    Compte1.interetcompte(3);
+    Compte1.affichercompte();
+    Compte1.changertype("courant");
+    Compte1.interetcompte(2);
+    Compte1.affichercompte();
+    Compte1.changertype("épargne");
+    Compte1.interetcompte(1);
+    Compte1.affichercompte();
+}
