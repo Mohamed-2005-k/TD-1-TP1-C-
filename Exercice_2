@@ -1,0 +1,76 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+class Rectangle {
+    private:
+    float largeur,longueur,perimetre,surface,diagonale,format;
+    public:
+    Rectangle(float largeur,float longueur);
+    float getLongueur();
+    float getLargeur();
+    void setRectangle(float largeur,float longueur);
+    void calculRectangle();
+    void perimetreRec();
+    void surfaceRec();
+    void diagonaleRec();
+    void formatRec();
+    void afficherRec();
+    ~Rectangle();
+};
+Rectangle :: Rectangle(float largeur,float longueur){
+    if (largeur<0 || largeur==0){
+        cout<<"La largeur invalide"<<endl;
+    }
+    if(longueur<0 ||longueur==0){
+        cout<<"La longueur invalide"<<endl;
+    }
+    this->largeur=largeur;
+    this->longueur=longueur;
+}
+float Rectangle :: getLargeur(){
+    return (this->largeur);
+}
+float Rectangle :: getLongueur(){
+    return (this->longueur);
+}
+void Rectangle :: setRectangle(float largeur,float longueur){
+    this->largeur=largeur;
+    this->longueur=longueur;
+}
+void Rectangle :: perimetreRec(){
+    this->perimetre=2*(largeur+longueur);
+}
+void Rectangle :: surfaceRec(){
+    this->surface=largeur*longueur;
+}
+void Rectangle :: diagonaleRec(){
+    this->diagonale=sqrt(pow(largeur,2.0)+pow(longueur,2.0));
+}
+void Rectangle :: formatRec(){
+    this->format=longueur/largeur;
+}
+void Rectangle ::calculRectangle(){
+    perimetreRec();
+    surfaceRec();
+    diagonaleRec();
+    formatRec();
+}
+void Rectangle :: afficherRec(){
+    cout<<"Les caractéristiques de rectangle de largeur "<<getLargeur();
+    cout<<" et de longueur " <<getLongueur()<<" sont :"<<endl;
+    cout<<"Le perimetre est : "<<perimetre<<endl;
+    cout<<"la surface est : "<<surface<<endl;
+    cout<<"le diagonale est : "<<diagonale<<endl;
+    cout<<"le format est : "<<format<<endl;
+}
+Rectangle::~Rectangle(){}
+int main(void){
+    Rectangle R1(2,4);
+    R1.calculRectangle();
+    R1.afficherRec();
+    cout<<"Le nouveau rectangle :"<<endl; 
+    R1.setRectangle(3,9);
+    R1.calculRectangle();
+    R1.afficherRec();
+}
+
