@@ -1,0 +1,133 @@
+#include<iostream>
+#include<string>
+#include<cmath>
+using namespace std;
+class Personne{
+    private:
+    string CIN,nom,prenom;
+    int age;
+    float poids,taille,IMC;
+    public:
+    Personne(string CIN,string nom,string prenom,float taille,float poids,int age);
+    void afficherCIN();
+    void afficherNom();
+    void afficherPrenom();
+    void afficherTaille();
+    void afficherPoids();
+    void afficherAge();
+    void afficherPersonne();
+    void imcPersonne();
+    void interpretation();
+    ~Personne();
+};
+class Adresse : public Personne{
+    private:
+    int numero,code_postal;
+    string rue,boulevard,ville;
+    public:
+    Adresse(string CIN,string nom,string prenom,int numero,string rue,string boulevard,int code_postal,string ville,float taille,float poids,int age);
+    void afficher_Adresse();
+    void afficher_informations();
+    ~Adresse();
+};
+
+Personne::Personne(string CIN,string nom,string prenom,float taille,float poids,int age){
+    this->CIN=CIN;
+    this->nom=nom;
+    this->prenom=prenom;
+    this->taille=taille;
+    this->poids=poids;
+    this->age=age;
+}
+Adresse::Adresse(string CIN,string nom,string prenom,int numero,string rue,
+    string boulevard,int code_postal,string ville,float taille,float poids,int age) :
+     Personne(CIN,nom,prenom,taille,poids,age){
+    this->numero=numero;
+    this->rue=rue;
+    this->boulevard=boulevard;
+    this->code_postal=code_postal;
+    this->ville=ville;
+}
+void Personne::afficherCIN(){
+    cout<<"CIN est : "<<CIN<<endl;
+}
+void Personne::afficherNom(){
+    cout<<"Le nom est : "<<nom<<endl;
+}
+void Personne::afficherPrenom(){
+    cout<<"Le prenom est : "<<prenom<<endl;
+}
+void Personne::afficherTaille(){
+    if(taille>0){
+        cout<<"La taille est : "<<taille<<" m"<<endl;
+    }
+    else{
+        cout<<"La taille est invalide"<<endl;
+    }
+}
+void Personne::afficherPoids(){
+    if(poids>0){ 
+        cout<<"Le poids est : "<<poids<<" kg"<<endl;
+    }
+    else{
+        cout<<"Le poids est invalide"<<endl;
+    }
+}
+void Personne::afficherAge(){
+    if(age>0){
+        cout<<"L'age est : "<<age<<" ans"<<endl;
+    }
+    else{
+        cout<<"L'age invalide"<<endl;
+    }
+}
+void Personne::afficherPersonne(){
+    cout<<"Les informations de cette personne sont : "<<endl;
+    afficherCIN();
+    afficherNom();
+    afficherPrenom();
+    afficherTaille();
+    afficherPoids();
+    afficherAge();
+}
+void Personne::imcPersonne(){
+    this->IMC=(poids/pow(taille,2.0));
+    cout<<"L'IMC de ce personne est : "<<IMC<<endl;
+}
+void Personne::interpretation(){
+    if (IMC<=18.5){
+        cout<<"Cette personne a une insuffisance pondérale. "<<endl;
+    }
+    if (IMC>=30){
+        cout<<"Cette personne est obèse. "<<endl;
+    }
+    else if(IMC>18.5 && IMC<30){
+        cout<<"Cette personne a un poids normal. "<<endl;
+    }
+}
+void Adresse :: afficher_Adresse(){
+    cout<<"L'adresse est : ";
+    cout<<numero<<" "<<rue;
+    cout<<" "<<boulevard<<" ";
+    cout<<code_postal<<" "<<ville<<endl;
+}
+void Adresse :: afficher_informations(){
+    cout<<"Les informations de ce personne sont : "<<endl;
+    Personne::afficherCIN();
+    Personne::afficherNom();
+    Personne::afficherPrenom();
+    afficher_Adresse();
+    Personne::afficherTaille();
+    Personne::afficherPoids();
+    Personne::afficherAge(); 
+}
+Personne::~Personne(){}
+Adresse::~Adresse(){}
+int main(void){
+    Personne P2("D672003","Alaoui","Iyass",1.82,72.8,24);
+    P2.afficherPersonne();
+    P2.imcPersonne();
+    P2.interpretation();
+    Adresse A1("D672003","Alaoui","Iyass",50,"AL Fath 1","Toulal",50030,"Meknes",1.82,72.8,24);
+    A1.afficher_informations();
+}
