@@ -1,0 +1,78 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+class Cercle {
+    private:
+    float a,b,x,y;
+    float O[2];
+    float A[2];
+    float rayon,surface,perimetre;
+    public:
+    void centreCercle(float a,float b);
+    Cercle(float rayon);
+    void surfaceCer();
+    void perimetreCer();
+    void calculCercle();
+    void point(float x,float y);
+    void test_appartenance();
+    void afficherCer();
+    ~Cercle();
+};
+void Cercle::point(float x,float y){
+    this->A[0]=x;
+    this->A[1]=y;
+}
+void Cercle :: centreCercle(float a,float b){
+    this->O[0]=a;
+    this->O[1]=b;
+}
+Cercle :: Cercle(float rayon){
+    if(rayon>0){
+    this->rayon=rayon;}
+}
+void Cercle :: surfaceCer(){
+    this->surface=2*M_PI*rayon;
+}
+void Cercle :: perimetreCer(){
+    this->perimetre=M_PI*pow(rayon,2.0);
+}
+void Cercle :: calculCercle(){
+    surfaceCer();
+    perimetreCer();
+}
+void Cercle :: afficherCer(){
+    if(rayon>0){
+        cout<<"Les caractéristiques du cercle de centre O("<<O[0]<<",";
+        cout<<O[1]<< ") et de rayon ";
+        cout<<rayon<<" sont : "<<endl;
+        cout<<"La surface de cercle est : "<<surface<<endl;
+        cout<<"Le perimetre de cercle est : "<<perimetre<<endl;}
+    else{
+        cout<<"Le rayon est invalide"<<endl;
+    }
+}
+void Cercle::test_appartenance(){
+    if(pow(A[0]-O[0],2.0)+pow(A[1]-O[1],2.0)-pow(rayon, 2.0)==0){
+        cout<<"Le point A("<<A[0]<<",";
+        cout<<A[1]<<") appartient au cercle C(O(";
+        cout<<O[0]<<",";
+        cout<<O[1]<<"),"<<rayon<<"). "<<endl;
+    }
+    else{
+        cout<<"Le point A("<<A[0]<<",";
+        cout<<A[1]<<") n'appartient pas au cercle C(O(";
+        cout<<O[0]<<",";
+        cout<<O[1]<<"),"<<rayon<<"). "<<endl;
+    }
+}
+Cercle ::~ Cercle(){}
+int main(void){
+    Cercle C1(2);
+    C1.centreCercle(1,2);
+    C1.calculCercle();
+    C1.afficherCer();
+    C1.point(1,4);
+    C1.test_appartenance();
+    C1.point(-1,3);
+    C1.test_appartenance();
+}
