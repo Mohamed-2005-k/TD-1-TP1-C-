@@ -1,0 +1,73 @@
+#include "Adresse.h"
+#include<iostream>
+#include<string>
+using namespace std;
+bool Adresse::validerNumero(int numero){
+    if(numero<=0)
+    return false;
+    else 
+    return true;
+}
+bool Adresse::validerCode_postal(int code_postal){
+    if(code_postal<=0)
+    return false;
+    else 
+    return true;
+}
+Adresse::Adresse(string CIN,string nom,string prenom,int numero,string rue,
+    string boulevard,int code_postal,string ville,float taille,float poids,int age) :
+    Personne(CIN,nom,prenom,taille,poids,age){
+    this->rue=rue;
+    this->boulevard=boulevard;
+    this->ville=ville;
+    if(validerNumero(numero))
+        this->numero=numero;
+    else{
+        this->numero=1;
+    if(validerCode_postal(code_postal))  
+        this->code_postal=code_postal;
+    else
+        this->code_postal=1;
+}
+}
+int Adresse::getNumero(){
+    return this->numero;
+}
+int Adresse::getCode_postal(){
+    return this->code_postal;
+}
+string Adresse::getRue(){
+    return this->rue;
+}
+string Adresse::getBoulevard(){
+    return this->boulevard;
+}
+string Adresse::getVille(){
+    return this->ville;
+}
+void Adresse::setNumero(int numero){
+    if(validerNumero(numero))
+    this->numero=numero;
+    else{
+    cout<<"Numero invalide"<<endl;
+    this->numero=1;
+    }
+}
+void Adresse::setCode_postal(int code_postal){
+    if(validerCode_postal(code_postal))
+    this->code_postal=code_postal;
+    else{
+    cout<<"Code postal invalide"<<endl;
+    this->code_postal=1;
+    }
+}
+void Adresse::setRue(string rue){
+    this->rue=rue;
+}
+void Adresse::setBoulevard(string boulevard){
+    this->boulevard=boulevard;
+}
+void Adresse::setVille(string ville){
+    this->ville=ville;
+}
+Adresse::~Adresse(){}
