@@ -1,0 +1,92 @@
+#include "Personne.h"
+#include "Adresse.h"
+#include<iostream>
+#include<string>
+using namespace std;
+class Test{
+    public:
+    void testerPersonne();
+};
+void Test::testerPersonne(){
+    string CIN,nom,prenom,rue,boulevard,ville;
+    float poids,taille,age;
+    int numero,code_postal;
+    cout<<"Entrez votre CIN : "<<endl;
+    cin>>CIN;
+    cout<<"Entrez votre nom : "<<endl;
+    cin>>nom;
+    cout<<"Entrez votre prenom : "<<endl;
+    cin>>prenom;
+    cout<<"Entrez votre taille : "<<endl;
+    cin>>taille;
+    cout<<"Entrez votre poids : "<<endl;
+    cin>>poids;
+    cout<<"Entrez votre age : "<<endl;
+    cin>>age;
+    cout<<"Entrez le numero de maison : "<<endl;
+    cin>>numero;
+    cout<<"Entrez la rue : "<<endl;
+    cin>>rue;
+    cout<<"Entrez le boulevard : "<<endl;
+    cin>>boulevard;
+    cout<<"Entrez le code postal : "<<endl;
+    cin>>code_postal;
+    cout<<"Entrez la ville : "<<endl;
+    cin>>ville;
+    Adresse A1(CIN,nom,prenom,numero,rue,boulevard,code_postal,ville,taille,poids,age);
+    cout<<"Le nom est : "<<A1.getNom()<<endl;
+    cout<<"Le prenom est : "<<A1.getPrenom()<<endl;
+    cout<<"Le CIN est : "<<A1.getCIN()<<endl;
+    cout<<"L'adresse est : "<<A1.getNumero()<<" "<<A1.getRue()<<" "<<A1.getBoulevard()<<" "<<A1.getCode_postal()<<" "<<A1.getVille()<<endl;
+    cout<<"La taille est : "<<A1.getTaille()<<endl;
+    cout<<"Le poids est : "<<A1.getPoids()<<endl;
+    cout<<"L'age est : "<<A1.getAge()<<endl;
+    cout<<"L'IMC est : "<<A1.getIMC()<<endl;
+    A1.interpretation();
+    cout<<"Entrez votre nouveau CIN : "<<endl;
+    cin>>CIN;
+    A1.setCIN(CIN);
+    cout<<"Entrez votre nouveau nom : "<<endl;
+    cin>>nom;
+    A1.setNom(nom);
+    cout<<"Entrez votre nouveau prenom : "<<endl;
+    cin>>prenom;
+    A1.setPrenom(prenom);
+    cout<<"Entrez votre nouvelle taille : "<<endl;
+    cin>>taille;
+    A1.setTaille(taille);
+    cout<<"Entrez votre nouveau poids : "<<endl;
+    cin>>poids;
+    A1.setPoids(poids);
+    cout<<"Entrez votre nouveau age : "<<endl;
+    cin>>age;
+    A1.setAge(age);
+    cout<<"Entrez le nouveau numero de maison : "<<endl;
+    cin>>numero;
+    A1.setNumero(numero);
+    cout<<"Entrez la nouvelle rue : "<<endl;
+    cin>>rue;
+    A1.setRue(rue);
+    cout<<"Entrez le nouveau boulevard : "<<endl;
+    cin>>boulevard;
+    A1.setBoulevard(boulevard);
+    cout<<"Entrez le nouveau code postal : "<<endl;
+    cin>>code_postal;
+    A1.setCode_postal(code_postal);
+    cout<<"Entrez la nouvelle ville : "<<endl;
+    cin>>ville;
+    A1.setVille(ville);
+    cout<<"Le nom est : "<<A1.getNom()<<endl;
+    cout<<"Le prenom est : "<<A1.getPrenom()<<endl;
+    cout<<"Le CIN est : "<<A1.getCIN()<<endl;
+    cout<<"L'adresse est : "<<A1.getNumero()<<" "<<A1.getRue()<<" "<<A1.getBoulevard()<<" "<<A1.getCode_postal()<<" "<<A1.getVille()<<endl;
+    cout<<"La taille est : "<<A1.getTaille()<<endl;
+    cout<<"Le poids est : "<<A1.getPoids()<<endl;
+    cout<<"L'age est : "<<A1.getAge()<<endl;
+    cout<<"L'IMC est : "<<A1.getIMC()<<endl;
+    A1.interpretation();
+}
+int main(){
+    Test T;
+    T.testerPersonne();
+}
