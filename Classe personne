@@ -1,0 +1,32 @@
+#ifndef PERSONNE_H
+#define PERSONNE_H
+#include<string>
+#include<iostream>
+using namespace std;
+class Personne{
+    private:
+    string CIN,nom,prenom;
+    float poids,taille,age,IMC;
+    bool validerAge(float age);
+    bool validerPoids(float poids);
+    bool validerTaille(float taille);
+    public:
+    Personne(string CIN,string nom,string prenom,float taille,float poids,int age);
+    string getCIN();
+    string getNom();
+    string getPrenom();
+    float getTaille();
+    float getPoids();
+    float getAge();
+    void setCIN(string CIN);
+    void setNom(string nom);
+    void setPrenom(string prenom);
+    void setTaille(float taille);
+    void setPoids(float poids);
+    void setAge(float age);
+    void calculerIMC();
+    float getIMC();
+    void interpretation();
+    ~Personne();
+};
+#endif
