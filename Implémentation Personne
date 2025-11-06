@@ -1,0 +1,109 @@
+#include "Personne.h"
+#include<iostream>
+#include<string>
+#include<cmath>
+using namespace std;
+bool Personne::validerAge(float age){
+    if(age<=0)
+    return false;
+    else
+    return true;
+}
+bool Personne::validerPoids(float poids){
+    if(poids<3)
+    return false;
+    else
+    return true;
+}
+bool Personne::validerTaille(float taille){
+    if(taille<0.40)
+    return false;
+    else
+    return true;
+}
+Personne::Personne(string CIN,string nom,string prenom,float taille,float poids,int age){
+    this->CIN=CIN;
+    this->nom=nom;
+    this->prenom=prenom;
+    if(validerAge(age) )
+        this->age=age;
+    else
+        this->age=1;
+    if(validerTaille(taille))
+        this->taille=taille;
+    else
+        this->taille=1;
+    if(validerPoids(poids))
+        this->poids=poids;
+    else
+        this->poids=1;
+}
+string Personne::getCIN(){
+    return this->CIN;
+}
+string Personne::getNom(){
+    return this->nom;
+}
+string Personne::getPrenom(){
+    return this->prenom;
+}
+float Personne::getTaille(){
+    return this->taille;
+}
+float Personne::getPoids(){
+    return this->poids;
+}
+float Personne::getAge(){
+    return this->age;
+}
+void Personne::setCIN(string CIN){
+    this->CIN=CIN;
+}
+void Personne::setNom(string nom){
+    this->nom=nom;
+}
+void Personne::setPrenom(string prenom){
+    this->prenom=prenom;
+}
+void Personne::setTaille(float taille){
+    if(validerTaille(taille))
+    this->taille=taille;
+    else{
+    cout<<"Taille invalide"<<endl;
+    this->taille=1;
+    }
+}
+void Personne::setPoids(float poids){
+    if(validerPoids(poids))
+    this->poids=poids;
+    else{
+    cout<<"Poids invalide"<<endl;
+    this->poids=1;
+    }
+}
+void Personne::setAge(float age){
+    if(validerAge(age))
+    this->age=age;
+    else{
+    cout<<"Âge invalide"<<endl;
+    this->age=1;
+    }
+}
+void Personne::calculerIMC(){
+    this->IMC=(this->poids/pow((this->taille*0.01),2));
+}
+float Personne::getIMC(){
+    return this->IMC;
+}
+void Personne::interpretation(){
+    if (IMC<=18.5){
+        cout<<"Cette personne a une insuffisance ponderale. "<<endl;
+    }
+    if (IMC>=30){
+        cout<<"Cette personne est obese. "<<endl;
+    }
+    else if(IMC>18.5 && IMC<30){
+        cout<<"Cette personne a un poids normal. "<<endl;
+    }
+}
+Personne::~Personne(){}
