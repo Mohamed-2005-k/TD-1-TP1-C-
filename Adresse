@@ -1,0 +1,29 @@
+#ifndef ADRESSE_H
+#define ADRESSE_H
+#include "Personne.h"
+#include<string>
+#include<iostream>
+using namespace std;
+class Adresse : public Personne{
+    private:
+    int numero,code_postal;
+    string rue,boulevard,ville;
+    bool validerNumero(int numero);
+    bool validerCode_postal(int code_postal);
+    public:
+    Adresse(string CIN,string nom,string prenom,int numero,string rue,
+        string boulevard,int code_postal,string ville,float taille,float poids,int age);
+    int getNumero();
+    int getCode_postal();
+    string getRue();
+    string getBoulevard();
+    string getVille();
+    void setNumero(int numero);
+    void setCode_postal(int code_postal);
+    void setRue(string rue);
+    void setBoulevard(string boulevard);
+    void setVille(string ville);
+    ~Adresse();
+};
+#endif
+
